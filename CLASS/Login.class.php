@@ -33,6 +33,21 @@ abstract class Login
 		}
 	}
 
+	public static function logout()
+	{
+		session_unset();
+		session_destroy();
+		session_start();
+		session_reset();
+		
+		if(isset($_COOKIE['user']))
+		{
+		unset($_COOKIE['user']);
+		setcookie("user", "", time() -3600);
+		}
+
+	}
+
 }
 
 
