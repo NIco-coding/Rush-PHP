@@ -61,6 +61,21 @@ protected $array_errors;
 		return $bool;
 	}
 
+	public function recoverPassword($S_bdd)
+	{
+		$req = $S_bdd->prepare("SELECT password FROM users WHERE email= :email");
+		$error = $req->execute(array(':email'=>$this->email));
+		$recoverPassword = $req->fetch();
+
+		if(count($recoverPassword)>0 )
+		{
+			return $recoverPassword['password'];
+		}
+			else
+		{
+			return false;
+		}
+	}
 
 
 //-----------------------------------------------------------------------------------------------------------------------------GETTER
