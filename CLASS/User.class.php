@@ -149,7 +149,7 @@ protected $array_errors;
 			return false;
 	}
 	function setAge($S_age)
-	{
+	{	
 		if(is_int($S_age) && $S_age >= 13)
 		{
 			$this->age = $S_age;

@@ -3,7 +3,7 @@
 	include_once('CLASS/Login.class.php');
 	include_once('CLASS/User.class.php');
 	include_once('connect_db.php');
-	$bdd=connect_db("localhost","root","root","3306","pool_php_rush");
+	$bdd=connect_db("localhost","root","Nagakyotsunaka1","3306","pool_php_rush");
 
 	if(isset($_POST['send']))
 	{
@@ -16,6 +16,7 @@
 
 				Login::setCookie($_POST['email']);
 				Login::setSession($_POST['email']);
+				header('Location: index.php');
 			}
 
 		}
