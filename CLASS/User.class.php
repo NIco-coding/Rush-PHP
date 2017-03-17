@@ -1,5 +1,5 @@
 <?php
-include_once("/")
+
 
 class User
 {
@@ -44,6 +44,17 @@ protected $password;
 			return false;
 	}
 
+	public function addUser($S_bdd)
+	{
+		$req = $S_bdd->prepare("INSERT INTO users VALUES('',:lastname,:firstname,:age,:email,:password,0)");
+		$bool = $rep->execute(array(
+			':lastname'=> $this->lastname,
+			':firstname'=> $this->firstname,
+			':age'=> $this->age,
+			':email'=> $this->email,
+			':password'=> password_hash($this->password, PASSWORD_DEFAULT)));
+		return $bool;
+	}
 
 
 	
