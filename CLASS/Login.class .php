@@ -1,6 +1,6 @@
 <?php
 
-abstract class Login 
+abstract class Login
 {
 
 	public static function validateLogin($password_hash, $confirmPassword)
@@ -19,6 +19,18 @@ abstract class Login
 	public static function setCookie($email)
 	{
 		setCookie('user',$email, time() + 365*24*3600, null, null, false, true);
+	}
+
+	public static function isUserLogged()
+	{
+		if((!isset($_SESSION['user']) || empty($_SESSION['user'])) && (!isset($_COOKIE['user']) || empty($_COOKIE['user']))
+		{
+			header('Location: login.php');
+		}
+		elseif (!isset($_SESSION['user']) && isset($_COOKIE['user']) && !empty($_COOKIE['user'])
+		{
+			$_SESSION['user']=$_COOKIE['user'];
+		}
 	}
 
 }
