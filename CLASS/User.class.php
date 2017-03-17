@@ -77,6 +77,17 @@ protected $array_errors;
 		}
 	}
 
+	public function uniqueEmail($S_bdd)
+	{
+		$req = $S_bdd->prepare("SELECT email FROM users WHERE email= :email");
+		$bool = $req->execute(array(':email'=>$this->email));
+		$recoverEmail = $req->fetch();
+
+		if(count($recoverEmail)> 0)
+			return false;
+		else
+			return true;
+	}
 
 //-----------------------------------------------------------------------------------------------------------------------------GETTER
 	function getFirstname()
