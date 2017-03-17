@@ -1,4 +1,5 @@
 <?php
+const ERROR_LOG_FILE = ".ErrorDB.Log";
 function connect_db($host, $username, $passwd, $port, $db)
 {
   try

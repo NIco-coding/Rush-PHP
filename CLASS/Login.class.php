@@ -27,7 +27,7 @@ abstract class Login
 		{
 			header('Location: login.php');
 		}
-		elseif (!isset($_SESSION['user']) && isset($_COOKIE['user']) && !empty($_COOKIE['user'])
+		elseif (!isset($_SESSION['user']) && isset($_COOKIE['user']) && !empty($_COOKIE['user']))
 		{
 			$_SESSION['user']=$_COOKIE['user'];
 		}
