@@ -5,7 +5,7 @@ abstract class Login
 
 	public static function validateLogin($password_hash, $confirmPassword)
 	{
-		if(password_verify($password_hash, $confirmPassword))
+		if(password_verify($confirmPassword,$password_hash))
 			return true;
 		else
 			return false;
@@ -18,7 +18,7 @@ abstract class Login
 
 	public static function setCookie($email)
 	{
-		setCookie('user',$email, time() + 365*24*3600, null, null, false, true);
+		setrawcookie('user',$email, time() + 365*24*3600);
 	}
 
 	public static function isUserLogged()
