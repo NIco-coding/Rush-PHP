@@ -1,14 +1,7 @@
 <?php
-  session_start();
- function __autoload($className)
-  {
-    include('../CLASS/'.$className.".class.php");
-  }
-include_once('../connect_db.php');
 
-$bdd=connect_db("localhost","root","Nagakyotsunaka1","3306","pool_php_rush");
-Login::isUserLogged();
-Login::isAdmin($bdd);
+include_once('start_file.php');
+
 
   if(isset($_POST['send']))
   {
@@ -36,8 +29,8 @@ Login::isAdmin($bdd);
   }
 ?>
 
-<!DOCTYPE HTML PUBLIC ".//W3C//DTD XHTML 1.0 Transitional//EN" "http.www.w3c.org/TR/html/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html>
   <head>
     <title>
       Mon index PHP
@@ -50,6 +43,7 @@ Login::isAdmin($bdd);
     </header>
 
     <main>
+      <?php include_once("nav.php"); ?>
       <form method="POST">
           <label for="form_firstname">First name</label>
             <input id="form_firstname" type="text" name="firstname" required>

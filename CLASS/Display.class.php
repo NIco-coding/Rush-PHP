@@ -5,9 +5,16 @@ abstract class Display
 
 	static function createTables($s_table, $bdd)
 	{
+		if($s_table!="products")
+		{
+			$req = $bdd->query("SELECT * FROM ".$s_table);
+			$array = $req->fetchAll(PDO::FETCH_ASSOC);
+		}else{
+			$req = $bdd->query("SELECT products.id as 'id',products.name as 'name',price,categories.name as 'category' FROM ".$s_table." INNER JOIN categories ON ".$s_table.".category_id=categories.id");
+			$array = $req->fetchAll(PDO::FETCH_ASSOC);
+		}
 
-		$req = $bdd->query("SELECT * FROM ".$s_table);
-		$array = $req->fetchAll(PDO::FETCH_ASSOC);
+
 
 		echo"<table>";
 		echo"<tr>";
@@ -26,6 +33,7 @@ abstract class Display
 			echo "<tr>";
 			foreach ($user as $key=> $valeur)
 			{
+
 				if($key != 'password')
 				{
 				echo "<td>".$valeur."</td>";

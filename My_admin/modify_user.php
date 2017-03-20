@@ -1,15 +1,7 @@
 <?php
-session_start();
 
-function __autoload($className)
-{
-	include('../CLASS/'.$className.".class.php");
-}
-include_once('../connect_db.php');
+include_once('start_file.php');
 
-$bdd=connect_db("localhost","root","Nagakyotsunaka1","3306","pool_php_rush");
-Login::isUserLogged();
-Login::isAdmin($bdd);
 
 $modify = new UserManager($bdd);
 
@@ -25,7 +17,7 @@ if(isset($_POST['send']))
     $_POST['checkbox'] = 0;
 
   $modify->modifyUser($_POST['firstname'], $_POST['lastname'], $_POST['age'], $_POST['checkbox'], $_GET['id']);
-
+	header('Location: index.php');
 }
 
 $array = $modify->getUser($_GET['id']);
@@ -42,23 +34,7 @@ $array = $modify->getUser($_GET['id']);
       <h1> Home Admin>
     </header>
     <main>
-      <nav>
-        <ul id="first">
-          <li>
-            <ul id="second">
-              <li><h1> USER<h1></li>
-              <li><a href ='user_add.php'>Add user</a></li>
-              <li><a href ='user_list.php'>Modify user</a></li>
-            </ul>
-          </li>
-          <li>
-            <ul id="second">
-              <li><h1> Product<h1></li>
-              <li><a href ='product_form.php'>Add product</a></li>
-              <li><a href ='product_list.php'>Modify product</a></li>
-            </ul>
-          </li>
-      </nav>
+<?php include_once("nav.php"); ?>
     <article>
       <form method="POST">
           <label for="form_firstname">First name</label>
@@ -81,6 +57,13 @@ $array = $modify->getUser($_GET['id']);
 
             <label for="checkbox_admin">Admin</label>
             <input id="checkbox_admin" type="checkbox" name="checkbox" <?php if($array['admin'] == 1){ echo "checked";} ?>>
+<<<<<<< HEAD
+=======
+
+
+            <input id="form_conf_passwd" type="password" name="conf_password" value="" required>
+
+>>>>>>> ad47c3f8aeb4c83efe39466568fd10c04b6fc1db
 
             <label for="form_submit"></label>
             <input id="form_submit" type="submit" value="Modify" name="send">

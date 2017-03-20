@@ -13,11 +13,11 @@ class Product
   {
     $this->array_error=[];
     if(!($this->setName($s_name)))
-      array_push($array_error,array('name'=>'Name not valid.'));
-    if(!($this->setPrice($s_price))
-      array_push($array_error,array('price'=>'Price not valid.'));
-    if(!($this->setPrice($s_category))
-      array_push($array_error,array('category'=>'Category not valid.'));
+      array_push($this->array_error,array('name'=>'Name not valid.'));
+    if(!($this->setPrice($s_price)))
+      array_push($this->array_error,array('price'=>'Price not valid.'));
+    if(!($this->setCategory($s_category)))
+      array_push($this->array_error,array('category'=>'Category not valid.'));
 
   }
 
@@ -36,7 +36,8 @@ class Product
 
   public function setPrice($s_price)
   {
-    if($s_price!=NULL && is_double($s_price))
+
+    if($s_price!=NULL )
     {
       $this->price=$s_price;
       return true;
@@ -47,9 +48,9 @@ class Product
 
   public function setCategory($s_category)
   {
-    if($s_name!="" && is_string($s_name))
+    if($s_category!="" )
     {
-      $this->price=$s_price;
+      $this->category=$s_category;
       return true;
     }else{
       return false;

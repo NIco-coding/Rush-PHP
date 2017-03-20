@@ -1,10 +1,31 @@
 <?php
-session_start();
-include_once('../CLASS/Login.class.php');
-include_once('../connect_db.php');
-$bdd=connect_db("localhost","root","Nagakyotsunaka1","3306","pool_php_rush");
-Login::isUserLogged();
-Login::isAdmin($bdd);
+
+include_once('start_file.php');
+
+$productManage= new ProductManager($bdd);
+
+$name="";
+$price="";
+$category="";
+
+if(isset($_POST['send']))
+{
+    $product= new Product($_POST['name'],$_POST['price'],$_POST['category']);
+    if(count($product->getErrors()) == 0)
+    {
+    $test=$productManage->addProduct($product);
+
+    }else {
+      $name=$_POST['name'];
+      $price=$_POST['price'];
+      $category=$_POST['category'];
+      foreach ($product->getErrors as $key => $value) {
+        echo $value;
+      }
+
+    }
+}
+
 ?>
 <!Doctype html>
 <html>
@@ -13,28 +34,35 @@ Login::isAdmin($bdd);
   </head>
   <body>
     <header>
-      <h1> Home Admin>
     </header>
     <main>
-      <nav>
-        <ul id="first">
-          <li>
-            <ul id="second">
-              <li><h1> USER<h1></li>
-              <li><a href ='user_form.php'>Add user</a></li>
-              <li><a href ='user_list.php'>Modify user</a></li>
-            </ul>
-          </li>
-          <li>
-            <ul id="second">
-              <li><h1> Product<h1></li>
-              <li><a href ='product_add.php'>Add product</a></li>
-              <li><a href ='product_list.php'>Modify product</a></li>
-            </ul>
-          </li>
-      </nav>
+  <?php include_once("nav.php"); ?>
     <article>
+      <form method="POST">
+          <label for="name">Name</label>
+            <input name="name" type="text" value='<?php echo $name; ?>' >
 
+          <label for="price">Price</label>
+            <input name="price" type="text" min="3" max="99" value='<?php echo $price; ?>' >
+
+            <select name='category'>
+<?php
+  var_dump($productManage);
+    foreach ($productManage->listCategory() as $cat) {
+      foreach ($cat as $key => $value) {
+
+        if($category == $key )
+          echo "<option value =$key selected>".$value;
+        else
+          echo "<option value=$key>".$value;
+      }
+
+    }
+ ?>
+             </select>
+
+            <input id="form_submit" type="submit" value="Create" name="send">
+      </form>
     </article>
     </main>
     <footer>
