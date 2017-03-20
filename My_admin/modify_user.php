@@ -16,7 +16,7 @@ $modify = new UserManager($bdd);
 
 if(isset($_POST['send']))
 {
-<<<<<<< HEAD
+
   if(isset($_POST['checkbox']) && $_POST['checkbox'] == "on")
   {
     $_POST['checkbox'] = 1;
@@ -25,9 +25,7 @@ if(isset($_POST['send']))
     $_POST['checkbox'] = 0;
 
   $modify->modifyUser($_POST['firstname'], $_POST['lastname'], $_POST['age'], $_POST['checkbox'], $_GET['id']);
-=======
 
->>>>>>> products
 }
 
 $array = $modify->getUser($_GET['id']);
@@ -79,16 +77,16 @@ $array = $modify->getUser($_GET['id']);
             <input id="form_passwd" type="password" name="password" value="" >
 
             <label for="form_conf_passwd">Password Confirmation</label>
-<<<<<<< HEAD
+
             <input id="form_conf_passwd" type="password" name="conf_password" value="" >
 
             <label for="checkbox_admin">Admin</label>
             <input id="checkbox_admin" type="checkbox" name="checkbox" <?php if($array['admin'] == 1){ echo "checked";} ?>>
            
-=======
+
             <input id="form_conf_passwd" type="password" name="conf_password" value="" required>
 
->>>>>>> products
+
             <label for="form_submit"></label>
             <input id="form_submit" type="submit" value="Modify" name="send">
       </form>
