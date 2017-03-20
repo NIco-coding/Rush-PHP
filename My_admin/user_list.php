@@ -17,6 +17,13 @@ if (isset($_POST['Delete']))
     $delete->deletebyId($_POST['id']);
   }
 
+if (isset($_POST['Modify']))
+{
+  header('Location: modify_user.php?id='.$_POST['id']);
+
+}
+
+
 ?>
 
 <!Doctype html>
@@ -34,7 +41,7 @@ if (isset($_POST['Delete']))
           <li>
             <ul id="second">
               <li><h1> USER<h1></li>
-              <li><a href ='user_form.php'>Add user</a></li>
+              <li><a href ='user_add.php'>Add user</a></li>
               <li><a href ='user_list.php'>Modify user</a></li>
             </ul>
           </li>
