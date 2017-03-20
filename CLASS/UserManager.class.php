@@ -168,8 +168,20 @@ class UserManager
 	public function modifyUser($s_firstname, $s_lastname, $s_age, $s_admin, $s_id)
 	{
 		$req = $this->db->prepare("UPDATE users SET firstname = :firstname, lastname = :lastname, age = :age, admin = :admin WHERE id = :id");
-		$res = $req->execute();
-
+		$res = $req->execute(array(
+			':firstname'=>$s_firstname,
+			':lastname'=>$s_lastname,
+			':age'=>$s_age,
+			':admin'=>$s_admin,
+			':id'=>$s_id));
+		if($res == true)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
 

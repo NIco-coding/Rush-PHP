@@ -12,12 +12,21 @@ Login::isUserLogged();
 Login::isAdmin($bdd);
 
 $modify = new UserManager($bdd);
-$array = $modify->getUser($_GET['id']);
+
 
 if(isset($_POST['send']))
 {
-  
+  if(isset($_POST['checkbox']) && $_POST['checkbox'] == "on")
+  {
+    $_POST['checkbox'] = 1;
+  }
+  else
+    $_POST['checkbox'] = 0;
+
+  $modify->modifyUser($_POST['firstname'], $_POST['lastname'], $_POST['age'], $_POST['checkbox'], $_GET['id']);
 }
+
+$array = $modify->getUser($_GET['id']);
 
 ?>
 
@@ -63,11 +72,14 @@ if(isset($_POST['send']))
             <input id="form_age" type="number" name="age" min="3" max="99" value='<?php echo $array['age'] ?>' > 
             
             <label for="form_passwd">Password</label>
-            <input id="form_passwd" type="password" name="password" value="" required>
+            <input id="form_passwd" type="password" name="password" value="" >
 
             <label for="form_conf_passwd">Password Confirmation</label>
-            <input id="form_conf_passwd" type="password" name="conf_password" value="" required>
-            
+            <input id="form_conf_passwd" type="password" name="conf_password" value="" >
+
+            <label for="checkbox_admin">Admin</label>
+            <input id="checkbox_admin" type="checkbox" name="checkbox" <?php if($array['admin'] == 1){ echo "checked";} ?>>
+           
             <label for="form_submit"></label>
             <input id="form_submit" type="submit" value="Modify" name="send"> 
       </form>
