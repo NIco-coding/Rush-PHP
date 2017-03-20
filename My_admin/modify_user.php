@@ -42,23 +42,7 @@ $array = $modify->getUser($_GET['id']);
       <h1> Home Admin>
     </header>
     <main>
-      <nav>
-        <ul id="first">
-          <li>
-            <ul id="second">
-              <li><h1> USER<h1></li>
-              <li><a href ='user_add.php'>Add user</a></li>
-              <li><a href ='user_list.php'>Modify user</a></li>
-            </ul>
-          </li>
-          <li>
-            <ul id="second">
-              <li><h1> Product<h1></li>
-              <li><a href ='product_form.php'>Add product</a></li>
-              <li><a href ='product_list.php'>Modify product</a></li>
-            </ul>
-          </li>
-      </nav>
+<?php include_once("nav.php"); ?>
     <article>
       <form method="POST">
           <label for="form_firstname">First name</label>
@@ -82,7 +66,7 @@ $array = $modify->getUser($_GET['id']);
 
             <label for="checkbox_admin">Admin</label>
             <input id="checkbox_admin" type="checkbox" name="checkbox" <?php if($array['admin'] == 1){ echo "checked";} ?>>
-           
+
 
             <input id="form_conf_passwd" type="password" name="conf_password" value="" required>
 

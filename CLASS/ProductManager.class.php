@@ -10,10 +10,34 @@ class ProductManager
     $this->db =$s_bdd;
   }
 
+  public function getProductById($s_id)
+  {
+    $req = $this->db->query("SELECT * FROM products WHERE id=".$s_id);
+    $arr=$req->fetchAll(PDO::FETCH_ASSOC);
+    if(count($arr) == 0)
+      return false;
+    else
+      return $arr;
+  }
+
+  public function  update($s_name,$s_price, $s_category,$s_id)
+  {
+    $req=$this->db->prepare("UPDATE products SET name =:name, price =:price, category_id =:category WHERE id =:id");
+    $test=$req->execute(array(
+			':name'=>$s_name,
+			':price'=>$s_price,
+			':category'=>$s_category,
+      ':id'=>$s_id));
+
+    if($test == 0)
+      return false;
+    else
+      return true;
+  }
   public function getListProducts()
   {
     $req = $this->db->query("SELECT * FROM products");
-    $arr=$req->fetchAll(PDO::FETCH_ASSOC);
+    $arr=$req->fetch(PDO::FETCH_ASSOC);
 
     return $arr;
 
@@ -31,13 +55,9 @@ class ProductManager
 
   public function addProduct(Product $product)
   {
-    $req = $this->db->prepare("SELECT id FROM categories WHERE name=:name");
-    $error=$req->execute(array(':name'=>$product->getCategory()));
-    $category=$req->fetch();
-
-    $req=$this->db->exec("INSERT INTO products VALUES ('','$product->getName()','$product->getPrice()',".$category['id'].")");
-
-    if(!$error || $req==0)
+    $req=$this->db->prepare("INSERT INTO products VALUES ('',:name,:price,:category)");
+    $test=$req->execute(array(':name'=>$product->getName(),':price'=>$product->getPrice(),'category'=>$product->getCategory()));
+    if(!$test)
       return false;
     else
       return true;
@@ -57,12 +77,12 @@ class ProductManager
 
   public function listCategory()
   {
-    $req = $this->db->query("SELECT name FROM category");
-    $req->fetchAll(PDO::FECTH_ASSOC);
+    $req = $this->db->query("SELECT id,name FROM categories");
+    $res=$req->fetchAll(PDO::FETCH_ASSOC);
 
     $array=[];
-    foreach ($req as $value) {
-      array_push($array,$value['name']);
+    foreach ($res as $value) {
+      array_push($array,array($value['id']=>$value['name']));
     }
 
     if($req)
