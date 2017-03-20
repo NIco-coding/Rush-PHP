@@ -52,7 +52,7 @@ Login::isAdmin($bdd);
       </nav>
     <article>
 <?php
-Display::rowAllTable($Users->getList());
+Display::createTables("users",$bdd);
  ?>
     </article>
     </main>

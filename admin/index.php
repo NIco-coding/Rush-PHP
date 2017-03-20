@@ -5,6 +5,8 @@ include_once('../connect_db.php');
 $bdd=connect_db("localhost","root","root","3306","pool_php_rush");
 Login::isUserLogged();
 Login::isAdmin($bdd);
+
+
 ?>
 <!Doctype html>
 <html>
@@ -28,7 +30,7 @@ Login::isAdmin($bdd);
           <li>
             <ul id="second">
               <li><h1> Product<h1></li>
-              <li><a href ='product_form.php'>Add product</a></li>
+              <li><a href ='product_add.php'>Add product</a></li>
               <li><a href ='product_list.php'>Modify product</a></li>
             </ul>
           </li>
