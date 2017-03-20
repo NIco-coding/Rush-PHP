@@ -7,7 +7,7 @@ function __autoload($className)
 }
 include_once('../connect_db.php');
 
-$bdd=connect_db("localhost","root","Nagakyotsunaka1","3306","pool_php_rush");
+$bdd=connect_db("localhost","root","root","3306","pool_php_rush");
 Login::isUserLogged();
 Login::isAdmin($bdd);
 
@@ -29,7 +29,7 @@ Login::isAdmin($bdd);
           <li>
             <ul id="second">
               <li><h1> USER<h1></li>
-              <li><a href ='user_form.php'>Add user</a></li>
+              <li><a href ='user_add.php'>Add user</a></li>
               <li><a href ='user_list.php'>Modify user</a></li>
             </ul>
           </li>
