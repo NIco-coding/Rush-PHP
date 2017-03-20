@@ -7,7 +7,7 @@ function __autoload($className)
 }
 include_once('../connect_db.php');
 
-$bdd=connect_db("localhost","root","root","3306","pool_php_rush");
+$bdd=connect_db("localhost","root","Nagakyotsunaka1","3306","pool_php_rush");
 Login::isUserLogged();
 Login::isAdmin($bdd);
 
@@ -77,15 +77,10 @@ $array = $modify->getUser($_GET['id']);
             <input id="form_passwd" type="password" name="password" value="" >
 
             <label for="form_conf_passwd">Password Confirmation</label>
-
             <input id="form_conf_passwd" type="password" name="conf_password" value="" >
 
             <label for="checkbox_admin">Admin</label>
             <input id="checkbox_admin" type="checkbox" name="checkbox" <?php if($array['admin'] == 1){ echo "checked";} ?>>
-           
-
-            <input id="form_conf_passwd" type="password" name="conf_password" value="" required>
-
 
             <label for="form_submit"></label>
             <input id="form_submit" type="submit" value="Modify" name="send">
