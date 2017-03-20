@@ -1,14 +1,5 @@
 <?php
-session_start();
-function __autoload($className)
-{
-	include('../CLASS/'.$className.".class.php");
-}
-
-include_once('../connect_db.php');
-$bdd=connect_db("localhost","root","root","3306","pool_php_rush");
-Login::isUserLogged();
-Login::isAdmin($bdd);
+include_once('start_file.php');
 
 $productManage= new ProductManager($bdd);
 

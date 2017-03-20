@@ -1,13 +1,6 @@
 <?php
-session_start();
-function __autoload($class_name)
-{
-  include_once "../CLASS/".$class_name.'.class.php';
-}
-include_once('../connect_db.php');
-$bdd=connect_db("localhost","root","root","3306","pool_php_rush");
-Login::isUserLogged();
-Login::isAdmin($bdd);
+include_once('start_file.php');
+
 $Products = new ProductManager($bdd);
 
 if(isset($_POST['Delete']))

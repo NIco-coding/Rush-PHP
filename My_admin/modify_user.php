@@ -1,15 +1,5 @@
 <?php
-session_start();
-
-function __autoload($className)
-{
-	include('../CLASS/'.$className.".class.php");
-}
-include_once('../connect_db.php');
-
-$bdd=connect_db("localhost","root","root","3306","pool_php_rush");
-Login::isUserLogged();
-Login::isAdmin($bdd);
+include_once('start_file.php');
 
 $modify = new UserManager($bdd);
 
@@ -25,7 +15,7 @@ if(isset($_POST['send']))
     $_POST['checkbox'] = 0;
 
   $modify->modifyUser($_POST['firstname'], $_POST['lastname'], $_POST['age'], $_POST['checkbox'], $_GET['id']);
-
+	header('Location: index.php');
 }
 
 $array = $modify->getUser($_GET['id']);

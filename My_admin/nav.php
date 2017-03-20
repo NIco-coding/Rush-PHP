@@ -14,4 +14,11 @@
         <li><a href ='product_list.php'>List product</a></li>
       </ul>
     </li>
+    <li>
+      <ul id="second">
+        <li><h1> Category<h1></li>
+        <li><a href ='category_add.php'>Add category</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>

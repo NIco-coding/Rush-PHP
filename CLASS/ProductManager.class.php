@@ -74,11 +74,34 @@ class ProductManager
     else
       return false;
   }
+  public function categoryParentExist($s_category,$s_parent)
+  {
+    $req = $this->db->prepare("SELECT name FROM category WHERE name= :category AND parent_id=:parent");
+    $exec = $req->execute(array(':category'=>$s_category,':parent'=>$s_parent));
+    $res = $req->fetchAll();
+
+    if(count($res)>0)
+      return true;
+    else
+      return false;
+  }
+
+  public function addCategory($name,$parent)
+  {
+    $req = $this->db->exec("INSERT INTO categories VALUES ('','$name','$parent')");
+
+    if(count($res)>0)
+      return true;
+    else
+      return false;
+  }
 
   public function listCategory()
   {
-    $req = $this->db->query("SELECT id,name FROM categories");
-    $res=$req->fetchAll(PDO::FETCH_ASSOC);
+
+      $req = $this->db->query("SELECT id,name FROM categories");
+      $res=$req->fetchAll(PDO::FETCH_ASSOC);
+
 
     $array=[];
     foreach ($res as $value) {
