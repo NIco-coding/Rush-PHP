@@ -48,6 +48,26 @@ abstract class Login
 
 	}
 
+	public static function isAdmin($s_bdd)
+	{
+		$req = $s_bdd->prepare("SELECT admin FROM users WHERE email =:email");
+		$bool = $req->execute(array(':email'=>$_SESSION['user']));
+		$res = $req->fetch();
+		
+		if ($res['admin'] == true)
+		{
+			
+			return true;
+		}
+		else
+		{
+			header("Location: ../login.php");
+			return false;
+		}
+
+
+	}
+
 }
 
 

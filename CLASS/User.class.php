@@ -81,7 +81,7 @@ protected $array_errors;
 	{
 		$req = $S_bdd->prepare("SELECT email FROM users WHERE email= :email");
 		$bool = $req->execute(array(':email'=>$this->email));
-		$recoverEmail = $req->fetch();
+		$recoverEmail = $req->fetchAll();
 
 		if(count($recoverEmail)> 0)
 			return false;
