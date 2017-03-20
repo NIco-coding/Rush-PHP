@@ -28,13 +28,13 @@ Login::isAdmin($bdd);
           <li>
             <ul id="second">
               <li><h1> Product<h1></li>
-              <li><a href ='product_form.php'>Add product</a></li>
+              <li><a href ='product_add.php'>Add product</a></li>
               <li><a href ='product_list.php'>Modify product</a></li>
             </ul>
           </li>
       </nav>
     <article>
-      
+
     </article>
     </main>
     <footer>
