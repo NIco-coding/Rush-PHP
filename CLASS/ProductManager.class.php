@@ -22,7 +22,6 @@ class ProductManager
 
   public function getProductOrderBy($str_order,$str_search,$limit_inf,$limit_sup)
   {
-
       $req = $this->db->query("(SELECT products.id as'prodId', products.name as 'prodName', price, categories.id as 'catId',
       categories.name as 'catName',parent_id
       FROM products INNER JOIN categories ON products.category_id=categories.id
@@ -108,7 +107,7 @@ class ProductManager
   {
     $req = $this->db->exec("INSERT INTO categories VALUES ('','$name','$parent')");
 
-    if(count($res)>0)
+    if(count($req)>0)
       return true;
     else
       return false;

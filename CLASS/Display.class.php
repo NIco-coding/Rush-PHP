@@ -53,58 +53,41 @@ abstract class Display
 		echo "</table>";
 	}
 
-	public static function ProductOrderList($req,$page,$order_type,$by_cat="",$by_search="")
+	public static function ProductOrderList($req,$page,$order_type="")
 	{
 		$product_by_page= 9;
 		$limit_sup = ($page+1)*$product_by_page;
 		$limit_inf = ($page)*$product_by_page;
 		$order_sens="";
-		$order="";
+		$order_type="";
 
 		switch ($order_type) {
 			case 0://alpha ASC
 			$order_sens="ASC";
-			$order="prodName";
+			$order_type="name";
 				break;
 			case 1://alpha DESC
 			$order_sens="DESC";
-			$order="prodName";
+			$order_type="name";
 				break;
 			case 2://price ASC
 			$order_sens="ASC";
-			$order="price";
+			$order_type="price";
 				break;
 			case 3://price DESC
 			$order_sens="DESC";
-			$order="price";
+			$order_type="price";
 				break;
 
 			default:
 			$order_sens="ASC";
-			$order="prodName";
+			$order_type="name";
 				break;
 		}
-		$order_str=$order." ".$order_sens;
 
-		if($by_cat=="" && $by_search=="")
-		$str_search="";
-		elseif( $by_search=="")
-		$str_search="WHERE (categories.id=$by_cat OR categories.parent_id=$by_cat)";
-		elseif( $by_cat=="")
-		$str_search="WHERE LOWER(CONCAT(categories.name,products.name)) LIKE LOWER('%$by_search%')";
-		else {
-		$str_search ="WHERE LOWER(CONCAT(categories.name,products.name)) LIKE LOWER('%$by_search%') AND (categories.id=$by_cat OR categories.parent_id=$by_cat)";
-		}
+		$products=$req->getProductOrderBy($order_type,$order_sens,$limit_inf,$limit_sup);
 
-		$products=$req->getProductOrderBy($order_str,$str_search,$limit_inf,$limit_sup);
 		$count_by_line=0;
-
-		if(!$products || empty($products))
-		{
-			echo "<p>No result</p>";
-			return false;
-		}
-
 		foreach ($products as  $product) {
 			if($count_by_line == 0)
 			{
@@ -112,8 +95,8 @@ abstract class Display
 			}
 
 			echo "<article>";
-			echo "<h1> ".$product['prodName']."</h1>";
-			echo "<img ref='img-s-".$product['prodId'].".jpg' />";
+			echo "<h1> ".$product['name']."</h1>";
+			echo "<img ref='img-s-".$product['id'].".jpg' />";
 			echo "<p> ".$product['price']."</p>";
 			echo "</article>";
 			$count_by_line=$count_by_line+1;
