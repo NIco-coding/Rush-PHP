@@ -113,8 +113,8 @@ abstract class Display
 
         echo "<article>";
         echo "<h1> ".$product['prodName']."</h1>";
-        echo "<img ref='img-s-".$product['prodId'].".jpg' />";
-        echo "<p> ".$product['price']."</p>";
+        echo "<img src='imgFront/img-s-".$product['prodId'].".jpg' />";
+        echo "<p> ".$product['price']." ¥</p>";
         echo "</article>";
         $count_by_line=$count_by_line+1;
         if($count_by_line == 3)

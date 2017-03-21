@@ -77,8 +77,6 @@ $productManager = new ProductManager($bdd);
 
 		</header>
 
-
-
     <div class="container">
     <div class="jumbotron">
       <div class="subjumbo test">
@@ -87,11 +85,10 @@ $productManager = new ProductManager($bdd);
               <p>Profitez d'un cigare.</p>
               <a href="https://fr.wikipedia.org/wiki/Cigare">+ d'infos</a>
             </div>
+
       </div>
     </div>
     </div>
-    </div>
-
 	     <div class="flexbox">
           <main>
 
@@ -116,6 +113,7 @@ print_categories($arr);
  ?>
           </aside>
 		</div>
+
  <footer class="footer">
         <div class="container">
             <div class="row">
@@ -177,6 +175,9 @@ print_categories($arr);
         </div>
     </footer>
 
+
+
+    
 			<script src="reload_select.js"></script>
 	</body>
 </html>
