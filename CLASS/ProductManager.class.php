@@ -112,6 +112,19 @@ class ProductManager
     else
       return false;
   }
+  public function getAllCategory()
+  {
+
+      $req = $this->db->query("SELECT * FROM categories");
+      $res=$req->fetchAll(PDO::FETCH_ASSOC);
+
+    if($req)
+    {
+      return $res;
+    }else{
+      return false;
+    }
+  }
 
   public function listCategory()
   {
