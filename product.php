@@ -79,17 +79,12 @@ $productManager = new ProductManager($bdd);
 
 
 
-    <div class="container">
-    <div class="jumbotron">
-      <div class="subjumbo test">
-            <div class="container body_container">
-              <h1>Besoin d'un moment de détente ? </h1>
-              <p>Profitez d'un cigare.</p>
-              <a href="#">+ d'infos</a>
-            </div>
+    <div class="jumbotron test">
+      <div class="container">
+        <h1>Besoin d'un moment de détente ? </h1>
+        <p>Profitez d'un cigare.</p>
+        <a href="#">+ d'infos</a>
       </div>
-    </div>
-    </div>
     </div>
 
 	     <div class="flexbox">
@@ -116,69 +111,10 @@ print_categories($arr);
  ?>
           </aside>
 		</div>
- <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <!-- Contact us -->
-                <div class="col-md-4">
-                    <div class="headline">
-                        <h3>CONTACT US</h3>
-                    </div>
-                    <hr />
-                    <div class="content">
-                        <p>
-                            Paris, CP 75000<br />
-                            19, rue Wagram<br />
-                            01 25 28 98 45<br />
-                            <i class="glyphicon glyphicon-envelope"></i> Cubastyle@Comandante.com
-                        </p>
-                    </div>
-                </div>
-                <!-- social -->
-                <div class="col-md-4">
-                    <div class="headline">
-                        <h3>GO SOCIAL</h3>
-                    </div>
-                    <hr />
-                    <div class="content">
-                        <p>
-                            Get in touch with us: <br />
-                            <a href="http://www.leafacademy.eu/"> <i class="glyphicon glyphicon-leaf"></i></a><br />
-                            <a href="http://www.fire.upmc.fr/"> <i class="glyphicon glyphicon-fire"></i></a><br />
-                             <a href="http://www.raceforwater.com//"> <i class="glyphicon glyphicon-tint"></i><br />
-                               <a href=http://www.commentcamarche.net/contents/2191-est-il-temps-de-vous-mettre-au-cloud> <i class="glyphicon glyphicon-cloud"></i><br />
-                            </a>
 
-                        </p>
-                    </div>
-                </div>
-                <!-- Subscibe -->
-                <div class="col-md-4">
-                    <div class="headline">
-                        <h3>SUBSCRIBE</h3>
-                    </div>
-                    <hr />
-                    <div class="content">
-                        <p>
-                            Subscribe here: <br />
-                            <a href="https://www.facebook.com/">
-                            Facebook</a>
-                            <br />
-                            <a href="https://twitter.com/?lang=fr">
-                            Twitter</a>
-                             <br />
-                            <a href="https://plus.google.com/collections/featured?hl=fr">
-                            Google +</a>
-                        </p>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-   <!-- <footer>
+    <footer>
 			<p>MyCigars - 60, avenue des Champs-Elysées - 01.25.24.28.27</p>
-		</footer> -->
+		</footer>
 			<script src="reload_select.js"></script>
 	</body>
 </html>
