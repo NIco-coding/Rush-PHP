@@ -84,7 +84,7 @@ $productManager = new ProductManager($bdd);
             <div class="container body_container">
               <h1>Besoin d'un moment de détente ? </h1>
               <p>Profitez d'un cigare.</p>
-              <a href="#">+ d'infos</a>
+              <a href="https://fr.wikipedia.org/wiki/Cigare">+ d'infos</a>
             </div>
       </div>
     </div>
