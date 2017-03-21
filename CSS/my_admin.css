@@ -1,0 +1,139 @@
+header
+{
+  display: flex;
+}
+
+header h1
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+nav
+{
+  border: 2px solid black;
+  padding-right: 5%;
+}
+
+ul
+{
+  list-style: none;
+}
+
+#first
+{
+  padding: 0px;
+}
+.second
+{
+  display:flex;
+  flex-direction: column;
+}
+.second li
+{
+  display: block;
+}
+
+article
+{
+  display: block;
+}
+
+#principal
+{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main
+{
+  display: flex;
+}
+
+article
+{
+  margin-left: 20px;
+  margin-top: 5%;
+  margin-right: 10%;
+}
+
+article, table
+{
+  width: 100%;
+}
+
+table
+{
+  text-align: center;
+  border-collapse: collapse;
+
+}
+
+table th, td
+{
+  border: 1px solid grey;
+  width: 10%;
+
+
+}
+table tr
+{
+  margin-top: 10px;
+    height:70px;
+}
+
+table tr:nth-child(even)
+{
+  background-color: #eff0f1;
+}
+
+table form
+{
+  width :100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table input[type='submit']
+{
+  margin-top: 5px;
+  margin-left: inherit;
+  margin-right: inherit;
+}
+form
+{
+  display: flex;
+  flex-direction: column;
+    width: 40%;
+}
+input, label
+{
+  display: block;
+  margin: 0;
+  width: 100%;
+}
+
+input
+{
+    margin-top: 5px;
+}
+
+label
+{
+  margin-top: 15px;
+}
+
+select
+{
+    margin-top: 15px;
+}
+
+input[type='submit']
+{
+  margin-top: 15px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
