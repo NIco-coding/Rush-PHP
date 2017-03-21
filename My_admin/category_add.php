@@ -9,12 +9,9 @@ if(isset($_POST['send']))
   if(!empty($_POST['category']))
 
   {
-    if ($productManage->categoryParentExist($_POST['category'],$_POST['category_parent']))
-    {
+
       $productManage->addCategory($_POST['category'],$_POST['category_parent']);
-    }else{
-        echo "<p>Category already exist with this parent.</p>";
-    }
+  
 
   }else{
     echo "<p>Category invalid.</p>";
