@@ -13,7 +13,29 @@ $productManager = new ProductManager($bdd);
 	}else{
 		$page=0;
 	}
-	$order_type=0;
+
+	if(isset($_GET['order']))
+	{
+		$order_type=$_GET['order'];
+	}else{
+		$order_type=0;
+	}
+
+	if(isset($_GET['search']))
+	{
+		$search=$_GET['search'];
+	}else{
+		$search="";
+	}
+
+	if(isset($_GET['category']))
+	{
+		$category=$_GET['category'];
+	}else{
+		$category="";
+	}
+
+
 ?>
 
 <!DOCTYPE HTML PUBLIC ".//W3C//DTD XHTML 1.0 Transitional//EN" "http.www.w3c.org/TR/html/DTD/xhtml1-transitional.dtd">
@@ -66,13 +88,22 @@ $productManager = new ProductManager($bdd);
 
 	     <div class="flexbox">
           <main>
+
 <?php
-Display::ProductOrderList($productManager,$page,$order_type);
+Display::ProductOrderList($productManager,$page,$order_type,$category,$search);
  ?>
       		</main>
 
 
           <aside>
+					<form method="GET">
+						<select name="order" id="order">
+							<option value="0" <?php if($order_type == 0){echo "selected";} ?>/> Alphabetically
+							<option value="1" <?php if($order_type == 1){echo "selected";} ?>/> reverse Alphabetically
+							<option value="2" <?php if($order_type == 2){echo "selected";} ?>/> Increasing price
+							<option value="3" <?php if($order_type == 3){echo "selected";} ?>/> Decreasing price
+						</select>
+					</form>
           <ul>
               <li>Catégorie 1
             <select>
@@ -141,5 +172,6 @@ Display::ProductOrderList($productManager,$page,$order_type);
     <footer>
 			<p>MyCigars - 60, avenue des Champs-Elysées - 01.25.24.28.27</p>
 		</footer>
+			<script src="reload_select.js"></script>
 	</body>
 </html>

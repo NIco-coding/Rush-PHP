@@ -4,11 +4,11 @@
     $retVal = array($parentId);
 
     $query = "SELECT * FROM categories WHERE parent_id = ".$parentId;
-    $result = $this->db->query($query);
+    $result = $bdd->query($query);
 
     foreach($result->rows as $row)
     {
-        $retVal = array_merge($retVal, $this->getList($row["category_id"]));
+        $retVal = array_merge($retVal, getList($row["category_id"]));
     }
 
     return $retVal;

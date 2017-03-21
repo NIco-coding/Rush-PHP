@@ -20,18 +20,19 @@ class ProductManager
       return $arr;
   }
 
-  public function getProductOrderBy($order_type,$order,$limit_inf,$limit_sup)
+  public function getProductOrderBy($str_order,$str_search,$limit_inf,$limit_sup)
   {
-    if(in_array($order,["DESC","ASC"]) && $order!="")
-    {
-      $req = $this->db->query("SELECT * FROM products ORDER BY $order_type LIMIT $limit_inf,$limit_sup");
+
+      $req = $this->db->query("(SELECT products.id as'prodId', products.name as 'prodName', price, categories.id as 'catId',
+      categories.name as 'catName',parent_id
+      FROM products INNER JOIN categories ON products.category_id=categories.id
+      $str_search ORDER BY $str_order)LIMIT $limit_inf,$limit_sup");
       $arr=$req->fetchAll(PDO::FETCH_ASSOC);
       if(count($arr) == 0)
         return false;
       else
         return $arr;
-    }else
-      return false;
+
   }
 
 
