@@ -1,13 +1,19 @@
 <?php
-	session_start();
-	include_once('CLASS/Login.class.php');
-	Login::isUserLogged();
-	
+include_once('start_file.php');
+$productManager = new ProductManager($bdd);
 	if(isset($_POST['send']))
 	{
 		Login::logout();
 		header('Location: login.php');
 	}
+
+	if(isset($_GET['page']))
+	{
+		$page=$_GET['page'];
+	}else{
+		$page=0;
+	}
+	$order_type=0;
 ?>
 
 <!DOCTYPE HTML PUBLIC ".//W3C//DTD XHTML 1.0 Transitional//EN" "http.www.w3c.org/TR/html/DTD/xhtml1-transitional.dtd">
@@ -42,13 +48,13 @@
                   <label for="form_submit"></label>
                   <input class="btn btn-danger" id="form_submit" type="submit" name ="send" value="Logout"></li>
                  </form>
-          </ul> 
-        </div>  
+          </ul>
+        </div>
       </nav>
-        
+
 		</header>
-		
-   
+
+
 
     <div class="jumbotron test">
       <div class="container">
@@ -60,21 +66,9 @@
 
 	     <div class="flexbox">
           <main>
-      			   <section>
-                   <article>Article 1</article> 
-                   <article>Article 2</article> 
-                   <article>Article 3</article>                   
-               </section>
-                <section>
-                   <article>Article 4</article> 
-                   <article>Article 5</article> 
-                   <article>Article 6</article>                   
-               </section>
-                <section>
-                   <article>Article 7</article> 
-                   <article>Article 8</article> 
-                   <article>Article 9</article>                   
-               </section>
+<?php
+Display::ProductOrderList($productManager,$page,$order_type);
+ ?>
       		</main>
 
 
@@ -143,7 +137,7 @@
           </ul>
           </aside>
 		</div>
-		
+
     <footer>
 			<p>MyCigars - 60, avenue des Champs-Elysées - 01.25.24.28.27</p>
 		</footer>
