@@ -25,7 +25,7 @@
 
 	<body>
 		<header class="header">
-      <h1> Welcome to MyCigars</h1>
+      <h1 class="h1"> Cuba's spirit</h1>
       <nav class="nav">
         <div class="container">
           <ul class="left-nav pull-left">
@@ -50,13 +50,14 @@
 		
    
 
-    <div class="jumbotron">
+    <div class="jumbotron test">
       <div class="container">
         <h1>Besoin d'un moment de détente ? </h1>
         <p>Profitez d'un cigare.</p>
         <a href="#">+ d'infos</a>
       </div>
-      </div>
+    </div>
+
 	     <div class="flexbox">
           <main>
       			   <section>
