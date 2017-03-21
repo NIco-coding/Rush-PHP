@@ -176,9 +176,7 @@ print_categories($arr);
             </div>
         </div>
     </footer>
-   <!-- <footer>
-			<p>MyCigars - 60, avenue des Champs-Elysées - 01.25.24.28.27</p>
-		</footer> -->
+
 			<script src="reload_select.js"></script>
 	</body>
 </html>
