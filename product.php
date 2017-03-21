@@ -56,12 +56,17 @@ $productManager = new ProductManager($bdd);
 
 
 
-    <div class="jumbotron test">
-      <div class="container">
-        <h1>Besoin d'un moment de détente ? </h1>
-        <p>Profitez d'un cigare.</p>
-        <a href="#">+ d'infos</a>
+    <div class="container">
+    <div class="jumbotron">
+      <div class="subjumbo test">
+            <div class="container body_container">
+              <h1>Besoin d'un moment de détente ? </h1>
+              <p>Profitez d'un cigare.</p>
+              <a href="#">+ d'infos</a>
+            </div>
       </div>
+    </div>
+    </div>
     </div>
 
 	     <div class="flexbox">
