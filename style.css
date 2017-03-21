@@ -22,33 +22,81 @@ div > ul > li {
 
 
 .jumbotron {
-	   margin-top: 14%;
-	   padding-top: 300px;
-	   background-image:url(img/che.jpg);
-	   z-index: 1;
+	display: block;
+   	background-image:url(img/che.jpg);
+   	background-repeat: no-repeat;
+   	z-index: 0;
+	width: inherit;
+    /*margin-top: 0px;*/
+    padding: 0 0;
+    margin: 0 0;
+
 }
 
 .test{
 	background-color: rgba(0,0,0,0.3);
 	transition: all 0.5s ease;
-	z-index: 10000;
+	z-index: 1;
+	!important;
 }
 
 .test:hover{
 	background-color: rgba(0,0,0,0);
-	z-index: 10000;
+	z-index: 1;
 }
 
 .container {
-	color : white;
+	/*color : transparent;*/
+	/*text-shadow: 0px 0px 0px white;*/
+	display: block;
+    margin: 0 0;
+    padding: 0 0;
+    width: 100%;
+	font-family: 'Roboto Thin';
+	color: white;
 }
 
+/*.body_container {
 
+}
+*/
+.container .jumbotron, .container-fluid .jumbotron {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.subjumbo{
+/*    position: absolute;*/
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+    height: 700px;
+    /*display: block;*/
+    padding: 0;
+    padding-right: 0px;
+    margin: 0px 0px 0px 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.body_container {
+	display: inline-table;
+	justify-content: center;
+	align-items: center;
+	margin-top: 450px;
+}
 
 /*.right-nav > li {
 
 	list-style-type: none;
 	padding: 0px 5px;
+		position: fixed;
+
 }*/
 
 .divright {
@@ -57,13 +105,13 @@ div > ul > li {
 
 header {
 
-	
-	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
-	z-index: 1;
-	background-color: rgb(170, 236, 230);;
+	z-index: 1000000;
+	background-color: rgb(170, 236, 230);
+	display: block;
+	position: fixed;
 }
 
 div {
@@ -134,4 +182,11 @@ main {
 	text-align: center;
 	font-family: 'Melancholight';
 	font-size: 120px;
+}
+
+@media screen (max-width: 640px){
+	.header .h1 {
+		font-size: 80px;
+	}
+
 }
