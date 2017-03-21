@@ -25,18 +25,20 @@ if(isset($_POST['send']))
 <!Doctype html>
 <html>
   <head>
-    <title>Home Admin</title>
+    <title>Category add</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/my_admin.css">
   </head>
   <body>
     <header>
-      <h1> Home Admin>
+      <h1> Admin - Category Add </h1>
     </header>
     <main>
   <?php include_once("nav.php"); ?>
     <article>
-      <form method='POST'>
-        <label for'category'>
+      <form method='POST' id='principal'>
+        <label for'category'> New Category
         <input type='text' name='category' /></label>
+        <label for="category_parent"> Parent category</label>
         <select name='category_parent'>
 <?php
 

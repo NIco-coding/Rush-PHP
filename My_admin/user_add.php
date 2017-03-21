@@ -35,16 +35,18 @@ include_once('start_file.php');
     <title>
       Mon index PHP
     </title>
+    <link rel="stylesheet" type="text/css" href="../CSS/my_admin.css">
   </head>
 
   <body>
     <header>
-
+      <h1> Admin - User Add </h1>
     </header>
 
     <main>
       <?php include_once("nav.php"); ?>
-      <form method="POST">
+      <article>
+      <form method="POST" id='principal'>
           <label for="form_firstname">First name</label>
             <input id="form_firstname" type="text" name="firstname" required>
 
@@ -66,6 +68,7 @@ include_once('start_file.php');
             <label for="form_submit"></label>
             <input id="form_submit" type="submit" value="Sign In" name="send">
       </form>
+    </article>
     </main>
 
     <footer>

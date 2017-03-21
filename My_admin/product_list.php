@@ -20,10 +20,11 @@ if(isset($_POST['Modify']))
 <html>
   <head>
     <title>Home Admin</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/my_admin.css">
   </head>
   <body>
     <header>
-      <h1> Home Admin>
+      <h1> Admin - Products List</h1>
     </header>
     <main>
   <?php include_once("nav.php"); ?>

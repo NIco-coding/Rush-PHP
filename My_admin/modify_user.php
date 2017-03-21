@@ -19,24 +19,27 @@ if(isset($_POST['send']))
   $modify->modifyUser($_POST['firstname'], $_POST['lastname'], $_POST['age'], $_POST['checkbox'], $_GET['id']);
 	header('Location: index.php');
 }
-
-$array = $modify->getUser($_GET['id']);
+if(isset($_GET['id']))
+  $array = $modify->getUser($_GET['id']);
+else
+  header('Location: user_list.php')
 
 ?>
 
 <!Doctype html>
 <html>
   <head>
-    <title>Home Admin</title>
+    <title>Modify User</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/my_admin.css">
   </head>
   <body>
     <header>
-      <h1> Home Admin>
+      <h1> Admin - Modify User </h1>
     </header>
     <main>
 <?php include_once("nav.php"); ?>
     <article>
-      <form method="POST">
+      <form method="POST" id='principal'>
           <label for="form_firstname">First name</label>
             <input id="form_firstname" type="text" name="firstname" value='<?php echo $array['firstname'] ?>' required>
 
@@ -57,13 +60,7 @@ $array = $modify->getUser($_GET['id']);
 
             <label for="checkbox_admin">Admin</label>
             <input id="checkbox_admin" type="checkbox" name="checkbox" <?php if($array['admin'] == 1){ echo "checked";} ?>>
-<<<<<<< HEAD
-=======
 
-
-            <input id="form_conf_passwd" type="password" name="conf_password" value="" required>
-
->>>>>>> ad47c3f8aeb4c83efe39466568fd10c04b6fc1db
 
             <label for="form_submit"></label>
             <input id="form_submit" type="submit" value="Modify" name="send">

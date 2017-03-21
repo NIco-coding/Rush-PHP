@@ -31,14 +31,16 @@ if(isset($_POST['send']))
 <html>
   <head>
     <title>Home Admin</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/my_admin.css">
   </head>
   <body>
     <header>
+      <h1> Admin - Product Add </h1>
     </header>
     <main>
   <?php include_once("nav.php"); ?>
     <article>
-      <form method="POST">
+      <form method="POST" id='principal'>
           <label for="name">Name</label>
             <input name="name" type="text" value='<?php echo $name; ?>' >
 

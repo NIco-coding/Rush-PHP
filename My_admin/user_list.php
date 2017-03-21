@@ -21,22 +21,23 @@ if (isset($_POST['Modify']))
 <!Doctype html>
 <html>
   <head>
-    <title>Home Admin</title>
+    <title>Admin - Users List</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/my_admin.css">
   </head>
   <body>
     <header>
-      <h1> Home Admin>
+      <h1>Admin - Users List</h1>
     </header>
     <main>
-<?php include_once("nav.php"); ?>
+      <?php include_once("nav.php"); ?>
     <article>
+      <?php
+      Display::createTables("users", $bdd);
+      ?>
+
     </article>
     </main>
     <footer>
     </footer>
   </body>
 </html>
-
-<?php
-Display::createTables("users", $bdd);
-?>

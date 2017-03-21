@@ -17,8 +17,13 @@ if(isset($_POST['send']))
 
     }
 }else {
-  $array_product=$productManage->getProductById($_GET['id']);
-  $product= new Product($array_product[0]['name'],$array_product[0]['price'],$array_product[0]['category_id']);
+  if(isset($_GET['id']))
+  {
+    $array_product=$productManage->getProductById($_GET['id']);
+    $product= new Product($array_product[0]['name'],$array_product[0]['price'],$array_product[0]['category_id']);
+  }else{
+    header("Location: product_list.php");
+  }
 
 }
 
@@ -29,14 +34,16 @@ if(isset($_POST['send']))
 <html>
   <head>
     <title>Home Admin</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/my_admin.css">
   </head>
   <body>
     <header>
+      <h1> Admin - Products Modify </h1>
     </header>
     <main>
   <?php include_once("nav.php"); ?>
     <article>
-      <form method="POST">
+      <form method="POST" id='principal'>
           <label for="name">Name</label>
             <input name="name" type="text" value='<?php echo $product->getName() ?>' >
 
