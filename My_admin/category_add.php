@@ -1,6 +1,5 @@
 <?php
 include_once('start_file.php');
-include_once('categories_list.php');
 
 $productManage= new ProductManager($bdd);
 
@@ -11,7 +10,7 @@ if(isset($_POST['send']))
   {
 
       $productManage->addCategory($_POST['category'],$_POST['category_parent']);
-  
+
 
   }else{
     echo "<p>Category invalid.</p>";
@@ -37,6 +36,7 @@ if(isset($_POST['send']))
         <input type='text' name='category' /></label>
         <label for="category_parent"> Parent category</label>
         <select name='category_parent'>
+        <option vale='0'>
 <?php
 
 foreach ($productManage->listCategory()  as $cat) {
