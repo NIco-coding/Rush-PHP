@@ -1,5 +1,6 @@
 <?php
 include_once('start_file.php');
+include_once('categories_list.php');
 $productManager = new ProductManager($bdd);
 	if(isset($_POST['send']))
 	{
@@ -104,68 +105,10 @@ Display::ProductOrderList($productManager,$page,$order_type,$category,$search);
 							<option value="3" <?php if($order_type == 3){echo "selected";} ?>/> Decreasing price
 						</select>
 					</form>
-          <ul>
-              <li>Catégorie 1
-            <select>
-                <ul>
-            <option><li>Sous-Catégorie 1</li></option>
-            <option><li>Sous-Catégorie 2</li></option>
-            <option><li>Sous-Catégorie 3</li></option>
-            <option><li>Sous-Catégorie 4</li></option>
-                </ul>
-            </select>
-              </li>
-              <li>Catégorie 2
-            <select>
-                <ul>
-            <option><li>Sous-Catégorie 1</li></option>
-            <option><li>Sous-Catégorie 2</li></option>
-            <option><li>Sous-Catégorie 3</li></option>
-            <option><li>Sous-Catégorie 4</li></option>
-                </ul>
-            </select>
-              </li>
-              <li>Catégorie 3
-            <select>
-                <ul>
-            <option><li>Sous-Catégorie 1</li></option>
-            <option><li>Sous-Catégorie 2</li></option>
-            <option><li>Sous-Catégorie 3</li></option>
-            <option><li>Sous-Catégorie 4</li></option>
-                </ul>
-            </select>
-              </li>
-              <li>Catégorie 4
-            <select>
-                <ul>
-            <option><li>Sous-Catégorie 1</li></option>
-            <option><li>Sous-Catégorie 2</li></option>
-            <option><li>Sous-Catégorie 3</li></option>
-            <option><li>Sous-Catégorie 4</li></option>
-                </ul>
-            </select>
-              </li>
-              <li>Catégorie 5
-            <select>
-                <ul>
-            <option><li>Sous-Catégorie 1</li></option>
-            <option><li>Sous-Catégorie 2</li></option>
-            <option><li>Sous-Catégorie 3</li></option>
-            <option><li>Sous-Catégorie 4</li></option>
-                </ul>
-            </select>
-              </li>
-              <li>Catégorie 6
-            <select>
-                <ul>
-            <option><li>Sous-Catégorie 1</li></option>
-            <option><li>Sous-Catégorie 2</li></option>
-            <option><li>Sous-Catégorie 3</li></option>
-            <option><li>Sous-Catégorie 4</li></option>
-                </ul>
-            </select>
-              </li>
-          </ul>
+<?php
+$arr=make_categories($productManager->getAllCategory());
+print_categories($arr);
+ ?>
           </aside>
 		</div>
 
