@@ -33,6 +33,18 @@ div > ul > li {
 
 }
 
+.jumbotron2 {
+	display: block;
+   	background-image:url(img/header.jpg);
+   	background-repeat: no-repeat;
+   	z-index: 0;
+	width: inherit;
+    /*margin-top: 0px;*/
+    padding: 0 0;
+    margin: 0 0;
+
+}
+
 .test{
 	background-color: rgba(0,0,0,0.3);
 	transition: all 0.5s ease;
