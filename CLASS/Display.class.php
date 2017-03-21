@@ -53,7 +53,67 @@ abstract class Display
 		echo "</table>";
 	}
 
+	public static function ProductOrderList($req,$page,$order_type="")
+	{
+		$product_by_page= 9;
+		$limit_sup = ($page+1)*$product_by_page;
+		$limit_inf = ($page)*$product_by_page;
+		$order_sens="";
+		$order_type="";
 
+		switch ($order_type) {
+			case 0://alpha ASC
+			$order_sens="ASC";
+			$order_type="name";
+				break;
+			case 1://alpha DESC
+			$order_sens="DESC";
+			$order_type="name";
+				break;
+			case 2://price ASC
+			$order_sens="ASC";
+			$order_type="price";
+				break;
+			case 3://price DESC
+			$order_sens="DESC";
+			$order_type="price";
+				break;
+
+			default:
+			$order_sens="ASC";
+			$order_type="name";
+				break;
+		}
+
+		$products=$req->getProductOrderBy($order_type,$order_sens,$limit_inf,$limit_sup);
+
+		$count_by_line=0;
+		foreach ($products as  $product) {
+			if($count_by_line == 0)
+			{
+				echo "<section>";
+			}
+
+			echo "<article>";
+			echo "<h1> ".$product['name']."</h1>";
+			echo "<img ref='img-s-".$product['id'].".jpg' />";
+			echo "<p> ".$product['price']."</p>";
+			echo "</article>";
+			$count_by_line=$count_by_line+1;
+			if($count_by_line == 3)
+			{
+				$count_by_line=0;
+				echo "</section>";
+			}
+
+			}
+
+			if($count_by_line != 0)
+			{
+				echo "</section>";
+			}
+
+		}
 
 
 

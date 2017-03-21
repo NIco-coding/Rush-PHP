@@ -20,6 +20,23 @@ class ProductManager
       return $arr;
   }
 
+  public function getProductOrderBy($order_type,$order,$limit_inf,$limit_sup)
+  {
+    if(in_array($order,["DESC","ASC"]) && $order!="")
+    {
+      $req = $this->db->query("SELECT * FROM products ORDER BY $order_type LIMIT $limit_inf,$limit_sup");
+      $arr=$req->fetchAll(PDO::FETCH_ASSOC);
+      if(count($arr) == 0)
+        return false;
+      else
+        return $arr;
+    }else
+      return false;
+  }
+
+
+
+
   public function  update($s_name,$s_price, $s_category,$s_id)
   {
     $req=$this->db->prepare("UPDATE products SET name =:name, price =:price, category_id =:category WHERE id =:id");
